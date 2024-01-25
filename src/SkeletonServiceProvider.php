@@ -19,7 +19,7 @@ class SkeletonServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/skeleton.php', ':vendor_slug.skeleton'
+            __DIR__.'/../config/skeleton.php', ':vendor_slug.skeleton'
         );
 
         $this->app->register(RouteServiceProvider::class);
@@ -32,11 +32,11 @@ class SkeletonServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'skeleton');
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'skeleton');
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'skeleton');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'skeleton');
 
         Blade::componentNamespace('VendorName\\Skeleton\\Views\\Components', 'skeleton');
 
@@ -50,17 +50,17 @@ class SkeletonServiceProvider extends ServiceProvider
     {
         // Package Configuration
         $this->publishes([
-            __DIR__ . '/../config/skeleton.php' => config_path(':vendor_slug/skeleton.php'),
+            __DIR__.'/../config/skeleton.php' => config_path(':vendor_slug/skeleton.php'),
         ], 'skeleton-config');
 
         //Package Translation
         $this->publishes([
-            __DIR__ . '/../lang' => $this->app->langPath('vendor/skeleton'),
+            __DIR__.'/../lang' => $this->app->langPath('vendor/skeleton'),
         ], 'skeleton-lang');
 
         //Package Blade Views
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/:vendor_slug/skeleton'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/:vendor_slug/skeleton'),
         ], 'skeleton-views');
 
         //Package Public Assets
@@ -70,7 +70,7 @@ class SkeletonServiceProvider extends ServiceProvider
 
         //Package Database Migrations
         $this->publishes([
-            __DIR__.'/../database/migrations/' => database_path('migrations')
+            __DIR__.'/../database/migrations/' => database_path('migrations'),
         ], 'skeleton-migrations');
     }
 
@@ -78,7 +78,7 @@ class SkeletonServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                InstallSkeletonCommand::class
+                InstallSkeletonCommand::class,
             ]);
         }
     }

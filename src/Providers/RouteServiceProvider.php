@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
+
 use function VendorName\Skeleton\optional;
 
 class RouteServiceProvider extends ServiceProvider
@@ -25,7 +26,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
 
-            Route::prefix("api")
+            Route::prefix('api')
                 ->middleware('api')
                 ->group(__DIR__.'/../routes/api.php');
 
